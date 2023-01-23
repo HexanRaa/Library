@@ -1,0 +1,41 @@
+body {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body,
+.container,
+h1 {
+  margin: 0;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  background-color: black;
+  color: white;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+main {
+  height: 100vh;
+}
+
+.books-container {
+  /* background-color: red; */
+  height: 100%;
+}
+
+main h1 {
+  text-align: center;
+}
+
+.card {
+  border: 2px solid black;
+}
