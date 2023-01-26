@@ -46,8 +46,8 @@ h3 {
   /* background-color: red; */
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto-fill, 250px);
   gap: 10px;
   padding: 10px;
 }
@@ -56,4 +56,68 @@ h3 {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 15px;
   padding: 10px;
+  max-height: 250px;
+}
+
+.form-modal {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  z-index: 5;
+  width: 400px;
+  height: 450px;
+  max-width: 80%;
+  border-radius: 15px;
+}
+
+.form-modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay {
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
+  pointer-events: none;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.form-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+input {
+  height: 20px;
+  padding: 7px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+label {
+  font-weight: 600;
+}
+
+.submitbtn {
+  background-color: black;
+  color: white;
+  height: 40px;
+  font-weight: 800;
+  font-size: 15px;
+  border-radius: 15px;
 }
