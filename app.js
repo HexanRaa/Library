@@ -107,8 +107,18 @@ displayBooks();
 const form = document.querySelector(".form-modal");
 const overlay = document.getElementById("overlay");
 const newBookBtn = document.querySelector(".newbookbtn");
+const closeBtn = document.getElementById("closebtn");
 
-newBookBtn.addEventListener("click", () => {
+newBookBtn.addEventListener("click", displayForm);
+
+closeBtn.addEventListener("click", closeForm);
+
+function displayForm() {
   overlay.classList.add("active");
   form.classList.add("active");
-});
+}
+
+function closeForm() {
+  overlay.classList.remove("active");
+  form.classList.remove("active");
+}
