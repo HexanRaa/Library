@@ -17,12 +17,24 @@ function getUserData() {
   const author = document.getElementById("author").value;
   const pages = document.getElementById("pages").value;
   const date = document.getElementById("pdate").value;
-  addBookToLibrary(title, author, pages, date, "yes");
+  const readBtn = document.getElementById("read");
+  const notReadBtn = document.getElementById("notread");
+  let read;
+
+  if (readBtn.checked) {
+    read = "Read";
+  } else if (notReadBtn.checked) {
+    read = "Not Read";
+  }
+
+  console.log(readBtn);
+
+  addBookToLibrary(title, author, pages, date, read);
 }
 
 function addBookToLibrary(title, author, pages, date, read) {
   if (checkBook(title)) {
-    alert("This book has been added");
+    alert("This book has been already added");
   } else {
     myLibrary.push(new Book(title, author, pages, date, read));
   }
@@ -42,13 +54,19 @@ function displayBooks() {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookPublishedDate = document.createElement("p");
-    const bookRead = document.createElement("p");
+    const bookRead = document.createElement("button");
     const bookLine = document.createElement("hr");
     const bookRemoveBtn = document.createElement("button");
 
     bookRemoveBtn.textContent = "Remove Book";
     card.classList.add("card");
+    bookRead.classList.add("btn", "readbtn");
     bookRemoveBtn.classList.add("btn");
+    if (book.read === "Read") {
+      bookLine.classList.add("read");
+    } else if (book.read === "Not Read") {
+      bookLine.classList.add("notread");
+    }
 
     bookName.textContent = book.title;
     bookAuthor.textContent = "Author: " + book.author;
