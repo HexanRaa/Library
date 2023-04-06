@@ -25,31 +25,34 @@
         <div class="books-container"></div>
       </main>
     </div>
-    <div class="form-modal">
-      <h3>Add New Book</h3>
-      <label for="title">Book Title</label>
-      <input type="text" name="title" id="title" placeholder="Title" />
-      <label for="author">Book Author</label>
-      <input type="text" name="author" id="author" placeholder="Author" />
-      <label for="pages">No. of Pages</label>
-      <input type="number" name="pages" id="pages" placeholder="Pages" />
-      <label for="pdate">Published Date</label>
-      <input type="date" name="pdate" id="pdate" />
-      <div>
-        <label for="read"
-          ><input type="radio" name="read" id="read" />Read</label
-        >
-        <label for="notread"
-          ><input type="radio" name="read" id="notread" checked />Not
-          Read</label
-        >
+    <form action="">
+      <div class="form-modal">
+        <h3>Add New Book</h3>
+        <p class="msg"></p>
+        <label for="title">Book Title</label>
+        <input type="text" name="title" id="title" placeholder="Title" />
+        <label for="author">Book Author</label>
+        <input type="text" name="author" id="author" placeholder="Author" />
+        <label for="pages">No. of Pages</label>
+        <input type="number" name="pages" id="pages" placeholder="Pages" />
+        <label for="pdate">Published Date</label>
+        <input type="date" name="pdate" id="pdate" />
+        <div>
+          <label for="read"
+            ><input type="radio" name="read" id="read" />Read</label
+          >
+          <label for="notread"
+            ><input type="radio" name="read" id="notread" checked />Not
+            Read</label
+          >
+        </div>
+        <button id="submitbtn" class="btn">Submit</button>
+        <div class="btn-container">
+          <button id="resetbtn" class="btn">Reset</button>
+          <button id="closebtn" class="btn">Close</button>
+        </div>
       </div>
-      <button id="submitbtn" class="btn">Submit</button>
-      <div class="btn-container">
-        <button id="resetbtn" class="btn">Reset</button>
-        <button id="closebtn" class="btn">Close</button>
-      </div>
-    </div>
+    </form>
     <div id="overlay"></div>
   </body>
 </html>
