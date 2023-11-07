@@ -1,17 +1,46 @@
-let myLibrary = [];
+// Library Class
 
-// Book Constructor
-function Book(title, author, pages, date, read) {
+class Library {
+  constructor () {
+    this.library = []
+  }
+
+  addBook (newBook) {
+    this.library.push(newBook)
+  }
+
+  getBooks() {
+    return this.library
+  }
+
+  // Checking Books Array for Existing Books
+  checkBook(title) {
+    return this.library.some(book => book.title === title);
+  }
+
+  removeBook(book) {
+    const index = this.library.indexOf(book);
+    this.library.splice(index, 1);
+    displayBooks();
+  }
+}
+
+const myLibrary = new Library()
+
+// Book Class
+class Book {
+  constructor (title, author, pages, date, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.date = date;
   this.read = read;
+  }
+  
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
-
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
 
 const submitBtn = document.getElementById("submitbtn");
 submitBtn.addEventListener("click", getUserData);
@@ -47,12 +76,12 @@ function getUserData(event) {
 
 // Adding new Books to the myLibrary Array
 function addBookToLibrary(title, author, pages, date, read) {
-  if (checkBook(title)) {
+  if (myLibrary.checkBook(title)) {
     msg.textContent = "This book has been already added";
     setTimeout(() => msg.remove(), 3000);
     getUserData();
   } else {
-    myLibrary.push(new Book(title, author, pages, date, read));
+    myLibrary.addBook(new Book(title, author, pages, date, read));
   }
   resetForm();
   closeForm();
@@ -64,7 +93,7 @@ function displayBooks() {
   console.log(myLibrary);
   const booksContainer = document.querySelector(".books-container");
   booksContainer.textContent = "";
-  myLibrary.forEach(book => {
+  myLibrary.getBooks().forEach(book => {
     const card = document.createElement("div");
     const bookName = document.createElement("h3");
     const bookAuthor = document.createElement("p");
@@ -105,16 +134,6 @@ function displayBooks() {
   });
 }
 
-// Checking Books Array for Existing Books
-function checkBook(title) {
-  return myLibrary.some(book => book.title === title);
-}
-
-function removeBook(book) {
-  const index = myLibrary.indexOf(book);
-  myLibrary.splice(index, 1);
-  displayBooks();
-}
 
 function toggleRead(book) {
   book.toggleRead();
